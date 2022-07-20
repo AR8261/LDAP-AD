@@ -1,0 +1,1 @@
+This flask app is for connecting to active directory. to use this ap you should set some configuration as environment variable; Domain=OU=domain-test-users,DC=company-test03,DC=local;domain_address=company-test03.local;smtp=smtp.office365.com;cea=;cep=

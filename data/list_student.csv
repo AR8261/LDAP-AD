@@ -1,0 +1,12 @@
+﻿StudentID,Lastname,Firstname,DateOfBirth,Phone,Email,Cohort,Program,StudentType,OU
+20000020,Karimi,Negin,2022.06.07,51412345678,arezoo.rahbar@montrealcollege.ca,SCSW2301,Supply Chain Management,Local students,SAP
+20000021,Karimi,Negin,2022.06.08,51412345678,arezoo.rahbar@montrealcollege.ca,BASW2301,Business Analyst of Information Technology,Local students,BA
+20000022,Rahbar,Arezoo,2022.06.10,51412345678,arezoo.rahbar@montrealcollege.ca,WBSW2301,Web App Development,Local students,WB
+20000023,Liu,Qiao,2022.06.11,51412345678,arezoo.rahbar@montrealcollege.ca,NTSW2301,Networking and Technical Support,Local students,Net
+20000024,Liu,Qiao,2022.06.12,51412345678,arezoo.rahbar@montrealcollege.ca,BISW2301,Business Intelligence and Visualization Analyst,Local students,BI
+20000025,Aziz,Mohammed,2022.06.16,51412345678,arezoo.rahbar@montrealcollege.ca,CSSF2301,Computer Science Technician,Local students,Computer Science
+20000026,Mousavi,Ahmad,2022.06.17,51412345678,arezoo.rahbar@montrealcollege.ca,DMSW2301,Digital Marketing,Local students,Digital Marketing
+20000027,Mousavi,Ahmad,2022.06.18,51412345678,arezoo.rahbar@montrealcollege.ca,JVSW2301,Java,Local students,Java
+20000028,Karimi,Negin,2022.06.07,51412345678,arezoo.rahbar@montrealcollege.ca,SDSF2302,Software Developer,Local students,SAD
+20000029,Karimi,Negin,2022.06.07,51412345678,arezoo.rahbar@montrealcollege.ca,STSF2302,Software Testing Quality Assurance,Local students,STQA
+20000030,Karimi,Negin,2022.06.07,51412345678,arezoo.rahbar@montrealcollege.ca,BDSF2302,Big Data,Local students,Big Data

@@ -1,0 +1,88 @@
+
+{% extends "base.html" %}
+{%block title %} Connecting to Server {% endblock %}
+ {% block content %}
+
+
+
+
+<div class="container-fluid ml-3">
+    <form  method="POST" id="loginform" enctype=multipart/form-data>
+
+        <div class="container-md w-25 mt-3" >
+        <label for="user_name" class="form-label" >UserName </label>
+
+        <input type="text" name="uname" id="user_name" class="form-control"  required>
+        </div>
+          <br>
+        <div class="container-md w-25 mb-3" >
+          <label for="pass" class="form-label" >PassWord</label>
+          <input type="password" class="form-control" id="pass" name="psw" required>
+        </div>
+
+        <div class="container-md w-25 mb-3 ">
+              <button type="submit" id="my_submit_button" class="btn btn-primary"  onclick="submit_clicked()" >Submit</button>
+        </div>
+            </form>
+           </div>
+<script>
+
+function submit_checked() {
+<!--    document.getElementById("loginform").setAttribute("method", "POST")-->
+    const myTimeout = setTimeout(disable_submit_btn, 1000);
+    function disable_submit_btn(){
+        var btn = document.getElementById('my_submit_button');
+        btn.disabled = true;
+        btn.innerText="posting..."
+    }
+}
+
+</script>
+
+<script>
+function submit_clicked() {
+var url=window.location.href;
+
+   if (url=='http://127.0.0.1:5000/deleting_students'){
+     let ConfirmAction = confirm("Are you sure to delete the student(s)?");
+     if (ConfirmAction){
+      submit_checked();
+     }else{
+     return false
+      window.location.replace('/services');
+     }
+    }
+   else{
+   submit_checked();
+
+   }
+
+
+    }
+
+</script>
+
+{%if alarm%}
+<script>
+    var myalarm={{ alarm|default("")|tojson }}
+    if (myalarm=="There is a problem in connection to server (Credential Error)")
+{
+alert("User Name or Password is not correct");
+    }
+</script>
+{% endif %}
+
+{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div>
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor -%}
+        </ul>
+      </div>
+    {% endif %}
+{% endwith %}
+

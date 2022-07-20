@@ -1,0 +1,121 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>-->
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
+
+<!--</head>-->
+
+{% extends "base.html" %}
+{%block title %} Filling Forms {% endblock %}
+ {% block content %}
+
+<div class="container-fluid ml-3">
+    <form method="POST" action="{{ url_for('ldap_blueprint.check_list',key=key)}} " enctype=multipart/form-data> >
+        <div class=" container-md w-25 mt-3 " id="ed_file">
+        <label for="edfile"  id="label_edfile" class="form-label" >Upload a file </label>
+            <br>
+        <input type="file" class="form-control" id="edfile" name="fileupload"  accept=".csv"value="<%= csrfToken %"/>
+        </div>
+          <br>
+
+        <div class="container-md w-25 mb-3" id="servername">
+          <label for="server-name" class="form-label" >Server dn</label>
+          <input type="text" class="form-control" id="server-name" name="server-name">
+        </div>
+        <br>
+
+        <div class="container-md w-25 mb-3 "  id="studentId">
+            <label for="student_Id"class="form-label" id="lable_student_Id" >Student Id </label>
+            <input type="text" class="form-control" id="student_Id" name="student_Id">
+          </div>
+          <br>
+
+        <div class="container-md w-25 mb-3 " id="cohortname">
+            <label for="cohort_name" class="form-label" id="lable_cohort_name">Cohort Name</label>
+            <input type="text" class="form-control" id="cohort_name" name="cohort_name" maxlength="10">
+        </div>
+        <br>
+
+        <div class="container-md w-25 mb-3 ">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+<script>
+function confirmAction() {
+        let confirmAction = confirm("Are you sure to execute this action?");
+        if (confirmAction) {
+        document.getElementById("studentId").style.display = "none";
+        document.getElementById("lable_student_Id").style.display = "none";
+        document.getElementById("lable_cohort_name").style.display = "none";
+        document.getElementById("cohort_name").style.display = "none";
+        document.getElementById("edfile").style.display = "block";
+
+        } else {
+          alert("Action canceled");
+          window.location.replace('/services');
+        }
+      }
+    </script>
+
+<script>
+var mykey={{key|tojson}}
+if (mykey =="Add"  || mykey=="Mod" || mykey=="ACTV")
+{
+    document.getElementById("studentId").style.display = "none";
+    document.getElementById("lable_student_Id").style.display = "none";
+    document.getElementById("lable_cohort_name").style.display = "none";
+    document.getElementById("cohort_name").style.display = "none";
+    document.getElementById("edfile").style.display = "block";
+}
+else if ( mykey == "Del")
+{
+      confirmAction() ;
+}
+
+
+else if (mykey=="Inf")
+{
+    document.getElementById("student_Id").style.display = "block";
+    document.getElementById("label_edfile").style.display = "none";
+    document.getElementById("lable_student_Id").style.display = "block";
+    document.getElementById("lable_cohort_name").style.display = "none";
+    document.getElementById("cohort_name").style.display = "none";
+    document.getElementById("edfile").style.display = "none";
+
+}
+else if (mykey=="CRT")
+{
+    document.getElementById("student_Id").style.display = "none";
+    document.getElementById("label_edfile").style.display = "none";
+    document.getElementById("lable_student_Id").style.display = "none";
+    document.getElementById("lable_cohort_name").style.display = "block";
+    document.getElementById("cohort_name").style.display = "block";
+    document.getElementById("edfile").style.display = "none";
+
+}
+</script>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div style="color:red">
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor -%}
+  </ul>
+</div>
+{% endif %}
+{% endwith %}
+
+{% endblock %}
+
